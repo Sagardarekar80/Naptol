@@ -40,7 +40,7 @@ public class BaseTest {
 		return title;
 	}	
 	
-	public void WaitForElementToBeClickable(WebDriver driver ,Duration i , String xpath)
+	public void waitForElementToBeClickable(WebDriver driver ,Duration i , String xpath)
 	{		
 		WebDriverWait wait = new WebDriverWait(driver,i);		
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));				

@@ -68,7 +68,7 @@ public class NaptolCartPageTest extends BaseTest {
 		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
 		int ListCount = naptolCartPage.getCartItemCount();
 		naptolCartPage.clickOnRemoveBtm(0);		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		webDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cartItems']")));		
 		int AfterRemoveListCount = naptolCartPage.getCartItemCount();
 		Assert.assertTrue(ListCount > AfterRemoveListCount);
@@ -113,13 +113,13 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolHomePage.moveToProduct(driver, 1);
 		naptolHomePage.clickOnQuickView(1);		
 		naptolQuickViewPage.clickOnClickHereToBuyButton();		
-		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[2]");			
+		waitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[2]");			
 		double AM1 = naptolCartPage.getOrderAmount();				
-		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[3]");
+		waitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[3]");
 		System.out.println(naptolCartPage.getOrderAmount2());
 		double AM2 = naptolCartPage.getOrderAmount2();		
 		double AM = AM1 + AM2;
-		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "//span[@id='totalPayableAmount']");		
+		waitForElementToBeClickable(driver, Duration.ofSeconds(10), "//span[@id='totalPayableAmount']");		
 		double TA= naptolCartPage.getTotalAmount();		
 		Assert.assertEquals(AM, TA);		
 	}	

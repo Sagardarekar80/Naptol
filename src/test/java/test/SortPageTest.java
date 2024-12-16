@@ -42,7 +42,7 @@ public class SortPageTest extends BaseTest
 			{
 				if(i<priceList.length-1)
 				{	
-					WaitForElementToBeClickable(driver ,Duration.ofSeconds(05) , "//span[@class='offer-price']");
+					waitForElementToBeClickable(driver ,Duration.ofSeconds(05) , "//span[@class='offer-price']");
 					Assert.assertTrue(priceList[i]>=priceList[i+1]);
 				}
 			}
