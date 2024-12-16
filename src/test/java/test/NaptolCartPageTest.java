@@ -75,7 +75,7 @@ public class NaptolCartPageTest extends BaseTest {
 	}
 
 	@Test
-	public void VerifyOnChangingProductQuantityCorrectAmountIsDisplyed() throws EncryptedDocumentException, IOException, InterruptedException 
+	public void verifyOnChangingProductQuantityCorrectAmountIsDisplyed() throws EncryptedDocumentException, IOException, InterruptedException 
 	{
 		test = reports.createTest("verifyOnChangingProductQuantityCorrectAmountIsDisplyed");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
