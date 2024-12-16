@@ -2,7 +2,6 @@ package test;
 
 import java.io.IOException;
 import java.time.Duration;
-
 import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +10,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import junit.framework.Assert;
 import pojo.Browser;
 import pom.NaptolCartPage;
@@ -33,10 +31,9 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolHomePage.clickOnSearchButton();
 		naptolHomePage.moveToProduct(driver, 1);
 		naptolHomePage.clickOnQuickView(1);
-
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		if (naptolQuickViewPage.getProductColorList() > 0) {
-			naptolQuickViewPage.SelectProductColor(1);
+			naptolQuickViewPage.selectProductColor(1);
 			naptolQuickViewPage.clickOnClickHereToBuyButton();
 		} else {
 			naptolQuickViewPage.clickOnClickHereToBuyButton();
@@ -57,68 +54,30 @@ public class NaptolCartPageTest extends BaseTest {
 
 	}
 
+
 	@Test
-	public void VerifyRemovingProductFromCart() throws EncryptedDocumentException, IOException, InterruptedException {
-		test = reports.createTest("VerifyRemovingProductFromCart");
-		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
-		naptolHomePage.enterValidProductNameForSearch();
-		naptolHomePage.clickOnSearchButton();
-		naptolHomePage.moveToProduct(driver, 1);
-		boolean result = naptolHomePage.clickOnQuickView(1);
-		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
-		if (naptolQuickViewPage.getProductColorList() > 0) {
-			naptolQuickViewPage.SelectProductColor(1);
-			naptolQuickViewPage.clickOnClickHereToBuyButton();
-		} else {
-			naptolQuickViewPage.clickOnClickHereToBuyButton();
-		}
-		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
-
-		naptolCartPage.getCartItemCount();
-
-		String RemovedProductname = naptolCartPage.clickOnRemoveBtm(0);
-
-		Thread.sleep(2000);
-		naptolCartPage.getCartItemCount();
-
-		String[] AllCartProductNames = naptolCartPage.getProductNames();
-		for (int i = 0; i < AllCartProductNames.length; i++) {
-			if (AllCartProductNames[i] != RemovedProductname) {
-				System.out.println(AllCartProductNames[i]);
-			}
-			Assert.assertEquals(AllCartProductNames[i], RemovedProductname);
-
-		}
-	}
-
-//	@Test
-	public void VerifyRemovingProductFromCart1() throws EncryptedDocumentException, IOException {
+	public void verifyRemovingProductFromCart() throws EncryptedDocumentException, IOException {
+		test = reports.createTest("verifyRemovingProductFromCart");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		naptolHomePage.moveToProduct(driver, 6);
-		boolean result = naptolHomePage.clickOnQuickView(6);
+		naptolHomePage.clickOnQuickView(6);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		naptolQuickViewPage.clickOnClickHereToBuyButton();
-
 		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
-
 		int ListCount = naptolCartPage.getCartItemCount();
-
-		String RemovedProductname = naptolCartPage.clickOnRemoveBtm(0);
-		// Wait for the product to be removed from the cart
+		naptolCartPage.clickOnRemoveBtm(0);		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cartItems']")));
-		// Check that the cart is empty
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cartItems']")));		
 		int AfterRemoveListCount = naptolCartPage.getCartItemCount();
 		Assert.assertTrue(ListCount > AfterRemoveListCount);
-
 	}
 
 	@Test
 	public void VerifyOnChangingProductQuantityCorrectAmountIsDisplyed() throws EncryptedDocumentException, IOException, InterruptedException 
 	{
-		test = reports.createTest("VerifyOnChangingProductQuantityCorrectAmountIsDisplyed");
+		test = reports.createTest("verifyOnChangingProductQuantityCorrectAmountIsDisplyed");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -126,11 +85,9 @@ public class NaptolCartPageTest extends BaseTest {
 		Thread.sleep(5000);
 		naptolHomePage.clickOnQuickView(1);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
-
 		naptolQuickViewPage.clickOnClickHereToBuyButton();
 		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
-		naptolCartPage.increaseQTY(driver);
-		
+		naptolCartPage.increaseQTY(driver);		
 		double up=naptolCartPage.getUnitPrice();		  		
 		double sp=naptolCartPage.getShippingPrice();					
 		double tp = (up*2)+sp;			
@@ -140,9 +97,9 @@ public class NaptolCartPageTest extends BaseTest {
 	}
 
 	@Test
-	public void VerifyTotalAmountForMultipleProductsInCart() throws EncryptedDocumentException, IOException, InterruptedException
+	public void verifyTotalAmountForMultipleProductsInCart() throws EncryptedDocumentException, IOException, InterruptedException
 	{
-		test = reports.createTest("VerifyTotalAmountForMultipleProductsInCart");
+		test = reports.createTest("verifyTotalAmountForMultipleProductsInCart");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -155,18 +112,19 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolQuickViewPage.clickOnCloseButton();
 		naptolHomePage.moveToProduct(driver, 1);
 		naptolHomePage.clickOnQuickView(1);		
-		naptolQuickViewPage.clickOnClickHereToBuyButton();
-		Thread.sleep(5000);
-		double AM1 = naptolCartPage.getOrderAmount();			
-		Thread.sleep(5000);
+		naptolQuickViewPage.clickOnClickHereToBuyButton();		
+		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[2]");			
+		double AM1 = naptolCartPage.getOrderAmount();				
+		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "(//li[@class='head_Amount'])[3]");
+		System.out.println(naptolCartPage.getOrderAmount2());
 		double AM2 = naptolCartPage.getOrderAmount2();		
 		double AM = AM1 + AM2;
-		Thread.sleep(5000);		
+		WaitForElementToBeClickable(driver, Duration.ofSeconds(10), "//span[@id='totalPayableAmount']");		
 		double TA= naptolCartPage.getTotalAmount();		
-		Assert.assertEquals(AM, TA);
-		
+		Assert.assertEquals(AM, TA);		
 	}	
 	
+
 	@AfterMethod
 	public void closeBrowser()
 	{

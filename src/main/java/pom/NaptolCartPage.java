@@ -1,9 +1,7 @@
 package pom;
 
-import java.io.IOException;
-import java.util.List;
 
-import org.apache.poi.EncryptedDocumentException;
+import java.util.List;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,24 +9,20 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utility.Parameterization;
-
-public class NaptolCartPage extends BaseClass{
-
-	
-	@FindBy(xpath = "//ul[@id='cartData']//h2")private WebElement CartProductName;
-	@FindBy(xpath = "//div[@id='cartItems']//h2")private List<WebElement> AddedProductToCart;
-	@FindBy(xpath = "//span[@class='font-bold-imp']")private WebElement CartItemCount;
-//	@FindBy(xpath = "//div[@id='cartItems']//ul")private List<WebElement> CartProductNameList;
+public class NaptolCartPage extends BaseClass
+{
+	@FindBy(xpath = "//ul[@id='cartData']//h2")private WebElement cartProductName;
+	@FindBy(xpath = "//div[@id='cartItems']//h2")private List<WebElement> addedProductToCart;
+	@FindBy(xpath = "//span[@class='font-bold-imp']")private WebElement cartItemCount;
 	@FindBy(xpath = "//p[@class='chintu']//a")private List<WebElement> removeBtm;
 	@FindBy(xpath = "//a[@onclick='cart.remove(596086614)']")private WebElement removeBtm1;
-	@FindBy(xpath = "(//button[@title='Close'])[4]")private WebElement CloseButton;
-	@FindBy(xpath = "(//ul[@id='cartData']//li//input)[1]")private WebElement QTY;
-	@FindBy(xpath = "(//li[@class='head_UPrice'])[2]")private WebElement UnitPrice;
-	@FindBy(xpath = "(//li[@class='head_ship'])[2]")private WebElement Shipping;
-	@FindBy(xpath = "(//li[@class='head_Amount'])[2]")private WebElement OrderAmount;
-	@FindBy(xpath = "(//li[@class='head_Amount'])[3]")private WebElement OrderAmount2;
-	@FindBy(xpath = "//span[@id='totalPayableAmount']")private WebElement TotalAmount;
+	@FindBy(xpath = "(//button[@title='Close'])[4]")private WebElement closeButton;
+	@FindBy(xpath = "(//ul[@id='cartData']//li//input)[1]")private WebElement qTY;
+	@FindBy(xpath = "(//li[@class='head_UPrice'])[2]")private WebElement unitPrice;
+	@FindBy(xpath = "(//li[@class='head_ship'])[2]")private WebElement shipping;
+	@FindBy(xpath = "(//li[@class='head_Amount'])[2]")private WebElement orderAmount;
+	@FindBy(xpath = "(//li[@class='head_Amount'])[3]")private WebElement orderAmount2;
+	@FindBy(xpath = "//span[@id='totalPayableAmount']")private WebElement totalAmount;
 	
 	public NaptolCartPage(WebDriver driver)
 	{
@@ -37,50 +31,49 @@ public class NaptolCartPage extends BaseClass{
 	
 	public String getCartProductname()
 	{
-		return CartProductName.getText();
+		return cartProductName.getText();
 	}
 	
 	public int getCartProductList()
 	{
 		
-		return AddedProductToCart.size();
+		return addedProductToCart.size();
 	}
 	
 	public int getCartItemCount()
 	{
-		System.out.println(CartItemCount.getText());
-		String [] count =  CartItemCount.getText().split(" ");
+		System.out.println(cartItemCount.getText());
+		String [] count =  cartItemCount.getText().split(" ");
 		System.out.println(count[0]);
-		return Integer.parseInt(removeBracesFromString(count[0]));
-				
+		return Integer.parseInt(removeBracesFromString(count[0]));				
 	}
 		
 	public String [] getProductNames()
 	{		
-		String [] ProductNames = new String [AddedProductToCart.size()];
-		for(int i=0; i<AddedProductToCart.size();i++)
+		String [] ProductNames = new String [addedProductToCart.size()];
+		for(int i=0; i<addedProductToCart.size();i++)
 		{
-			ProductNames[i]=AddedProductToCart.get(i).getText();
+			ProductNames[i]=addedProductToCart.get(i).getText();
 		}
 		return ProductNames;
 	}
 	
 	public String clickOnRemoveBtm(int index)	
 	{			
-		  String removedProductName = AddedProductToCart.get(index).getText();
+		  String removedProductName = addedProductToCart.get(index).getText();
 		  removeBtm.get(index).click();	  
 		  return removedProductName;
 	}
 	
 	public void clickOnCloseButton()
 	{
-		CloseButton.click();
+		closeButton.click();
 	}
 	
 	public void increaseQTY(WebDriver driver) throws InterruptedException
 	{
 		Thread.sleep(5000);
-		QTY.click();
+		qTY.click();
 		
 		Actions act = new Actions(driver);
 		act.sendKeys(Keys.ARROW_RIGHT);
@@ -94,29 +87,29 @@ public class NaptolCartPage extends BaseClass{
 	
 	public double getUnitPrice()
 	{		
-		String a = UnitPrice.getText().substring(3);		
+		String a = unitPrice.getText().substring(3);		
 		return Double.parseDouble(removeComaFromString(a));				 				
 	}
 	
 	public double getShippingPrice()
 	{
-		String  a = Shipping.getText().substring(3);
+		String  a = shipping.getText().substring(3);
 		return Double.parseDouble(removeComaFromString(a));					
 	}
 	public double getOrderAmount()
 	{		
-		String a = OrderAmount.getText();			
+		String a = orderAmount.getText();			
 		return Double.parseDouble(removeComaFromString(a));				
 	}
 	public double getOrderAmount2()
 	{		
-		String a = OrderAmount2.getText();		
+		String a = orderAmount2.getText();		
 		return Double.parseDouble(removeComaFromString(a));				
 	}
 	
 	public double getTotalAmount()
 	{		
-		String a = TotalAmount.getText();		
+		String a = totalAmount.getText();		
 		return Double.parseDouble(removeComaFromString(a));				
 	}	
 	

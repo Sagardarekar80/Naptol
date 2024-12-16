@@ -29,17 +29,12 @@ public class NaptolProductDetailsPageTest extends BaseTest {
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
-		
-		String title = naptolHomePage.clickOnProduct(driver);
-		
+		naptolHomePage.clickOnProduct(driver);		
 		NaptolProductDetailsPage naptolProductDetailsPage = new NaptolProductDetailsPage(driver);
-		String ProductName =  naptolProductDetailsPage.getProductName();
-		
-		
+		String ProductName =  naptolProductDetailsPage.getProductName();				
 		if(naptolProductDetailsPage.getProductColorList()>0)
 		{
-			naptolProductDetailsPage.SelectProductColor(1);
-						
+			naptolProductDetailsPage.selectProductColor(1);						
 			naptolProductDetailsPage.clickOnClickHereToBuyButton();			
 		}
 		else
@@ -47,12 +42,9 @@ public class NaptolProductDetailsPageTest extends BaseTest {
 			naptolProductDetailsPage.clickOnClickHereToBuyButton();
 		}
 		
-		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
-		
-		String CartProductName = naptolCartPage.getCartProductname();
-		
-		Assert.assertEquals(ProductName,CartProductName);					
-		
+		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);		
+		String CartProductName = naptolCartPage.getCartProductname();		
+		Assert.assertEquals(ProductName,CartProductName);							
 	}
 	@AfterMethod
 	public void closeBrowser()

@@ -13,8 +13,7 @@ public class Browser {
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://www.naaptol.com/");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
-		
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));		
 		return driver;
 	}
 

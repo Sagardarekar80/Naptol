@@ -11,7 +11,6 @@ public class Reports {
 		reports.attachReporter(htmlReports);
 		reports.setSystemInfo("ProjectName","Naaptol");
 		reports.setSystemInfo("Owner", "Arise");
-		return reports;
-		
+		return reports;		
 	}
 }

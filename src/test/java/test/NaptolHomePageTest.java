@@ -44,8 +44,8 @@ public class NaptolHomePageTest extends BaseTest  {
 		naptolHomePage.enterInvalidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		String searchResult = naptolHomePage.getSearchResultText();
-		double searchCount = Double.parseDouble(searchResult);									
-		Assert.assertTrue(searchCount==0);								
+		Integer searchCount = Integer.parseInt(searchResult);	
+		Assert.assertTrue(searchCount==1);								
 	}
 	
 	
@@ -59,47 +59,38 @@ public class NaptolHomePageTest extends BaseTest  {
 	}
 	
 	
-	//29-11-2024 changed
+	
 	@Test
-	public void VerifyIfProdutDetailsAreCorrcetIfViewInQuickView() throws EncryptedDocumentException, IOException 
+	public void verifyIfProdutDetailsAreCorrcetIfViewInQuickView() throws EncryptedDocumentException, IOException 
 	{
-		test = reports.createTest("VerifyIfProdutDetailsAreCorrcetIfViewInQuickView");
+		test = reports.createTest("verifyIfProdutDetailsAreCorrcetIfViewInQuickView");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
-		naptolHomePage.clickOnSearchButton();
-		
-		System.out.println(naptolHomePage.getProductName(1));
-		String ProductName =  naptolHomePage.getProductName(1);
-		
-		naptolHomePage.moveToProduct(driver,1);		
-		boolean result = naptolHomePage.clickOnQuickView(1);	
-		System.out.println(result);
+		naptolHomePage.clickOnSearchButton();				
+		String ProductName =  naptolHomePage.getProductName(2);		
+		naptolHomePage.moveToProduct(driver,2);		
+		boolean result = naptolHomePage.clickOnQuickView(2);	
 		Assert.assertTrue(result);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		String QuickViewProName = naptolQuickViewPage.getProductName();	
-		System.out.println(QuickViewProName);
 		Assert.assertEquals(ProductName, QuickViewProName);		
-		Double ProductPrice = naptolHomePage.getProductPrice(1);
-		System.out.println(ProductPrice);
-		Double QuickProductPrice = naptolQuickViewPage.getProductPrice(1);
-		System.out.println(QuickProductPrice);
+		Double ProductPrice = naptolHomePage.getProductPrice(2);
+		Double QuickProductPrice = naptolQuickViewPage.getProductPrice(2);
 		Assert.assertEquals(ProductPrice, QuickProductPrice);				
 	}
 	
 	@Test
-	public void VerifyProductDetailsAreCorrectIfViewInNewTab() throws EncryptedDocumentException, IOException
+	public void verifyProductDetailsAreCorrectIfViewInNewTab() throws EncryptedDocumentException, IOException
 	{
-		test = reports.createTest("VerifyProductDetailsAreCorrectIfViewInNewTab");
+		test = reports.createTest("verifyProductDetailsAreCorrectIfViewInNewTab");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
-		String ProductName =  naptolHomePage.getProductName(1);
-		
-		String title = naptolHomePage.clickOnProduct(driver);
-		Double ProductPrice = naptolHomePage.getProductPrice(1);
-		
+		String ProductName =  naptolHomePage.getProductName(2);                              
+		Double ProductPrice = naptolHomePage.getProductPrice(2);
+		naptolHomePage.clickOnProduct(driver);				
 		NaptolProductDetailsPage naptolProductDetailsPage = new NaptolProductDetailsPage(driver);
-		String ChildBrowserProductName = naptolProductDetailsPage.getProductName();
+		String ChildBrowserProductName = naptolProductDetailsPage.getProductName();							
 		double ChildBrowserProductPrice = naptolProductDetailsPage.getProductPrice(1);		
 		Assert.assertEquals(ProductName, ChildBrowserProductName);
 		Assert.assertEquals(ProductPrice, ChildBrowserProductPrice);
@@ -107,9 +98,9 @@ public class NaptolHomePageTest extends BaseTest  {
 	
 	
 	@Test
-	public void VerifySortFeature() throws EncryptedDocumentException, IOException
+	public void verifySortFeature() throws EncryptedDocumentException, IOException
 	{
-		test = reports.createTest("VerifySortFeature");
+		test = reports.createTest("verifySortFeature");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();

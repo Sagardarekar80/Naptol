@@ -12,7 +12,7 @@ public class Screenshot {
 public static void clickScreenShot(WebDriver driver, String name) throws IOException {
 		
 		File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File destination = new File("C:\\Users\\sagar\\Downloads\\Softwares\\eclipse-jee-2023-06-R-win32-x86_64\\JavaClass\\Ecom\\Screenshots\\"+ name +".jpg");
+		File destination = new File("./Screenshots/"+ name +".jpg");
 		FileHandler.copy(source, destination); 		
 	}
 }

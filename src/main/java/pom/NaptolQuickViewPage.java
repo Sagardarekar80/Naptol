@@ -9,11 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NaptolQuickViewPage extends BaseClass{
 
-	@FindBy(xpath = "//div[@id='square_Details']//h1") private WebElement ProductName;
-	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
-	@FindBy(xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> ProductColorList;
-	@FindBy(xpath = "//a[@id='cart-panel-button-0']") private WebElement ClickHereToBuyButton;
-	@FindBy(xpath = "(//button[@title='Close'])[2]") private WebElement CloseButton;
+	@FindBy(xpath = "//div[@id='square_Details']//h1") private WebElement productName;
+	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> productPriceList;
+	@FindBy(xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> productColorList;
+	@FindBy(xpath = "//a[@id='cart-panel-button-0']") private WebElement clickHereToBuyButton;
+	@FindBy(xpath = "(//button[@title='Close'])[2]") private WebElement closeButton;
 	
 	public NaptolQuickViewPage(WebDriver driver)
 	{
@@ -22,41 +22,38 @@ public class NaptolQuickViewPage extends BaseClass{
 	
 	public String getProductName()
 	{
-		return ProductName.getText();
+		return productName.getText();
 	}
 	public double getProductPrice(int index)
 	{
-		String [] a = ProductPriceList.get(index).getText().split(" ");
+		String [] a = productPriceList.get(index).getText().split(" ");
 		return Double.parseDouble(removeComaFromString(a[0]));	
 	}
 	
-	public void SelectProductColor(int index)
+	public void selectProductColor(int index)
 	{				
-		ProductColorList.get(index).click();	
+		productColorList.get(index).click();	
 	}
 	
 	public int  getProductColorList()
 	{
-		return ProductColorList.size();
+		return productColorList.size();
 	}
 				
 	public void clickOnClickHereToBuyButton()
 	{
 		
-		if(ProductColorList.size()>0)	
+		if(productColorList.size()>0)	
 		{
-			ProductColorList.get(1).click();
-			ClickHereToBuyButton.click();
+			productColorList.get(1).click();
+			clickHereToBuyButton.click();
 		}
 		else
-			ClickHereToBuyButton.click();
+			clickHereToBuyButton.click();
 	}
 	
 	public void clickOnCloseButton()
 	{
-		CloseButton.click();
+		closeButton.click();
 	}
-	
-	
-	
 }

@@ -3,12 +3,13 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="test.NaptolCartPageTest">
+      <class name="test.NaptolHomePageTest">
         <methods>
+          <include name="closeBrowser"/>
           <include name="launchApplication"/>
-          <include name="VerifyOnChangingProductQuantityCorrectAmountIsDisplyed"/>
+          <include name="VerifyProductDetailsAreCorrectIfViewInNewTab"/>
         </methods>
-      </class> <!-- test.NaptolCartPageTest -->
+      </class> <!-- test.NaptolHomePageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

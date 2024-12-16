@@ -11,8 +11,6 @@ import com.aventstack.extentreports.Status;
 import utility.Reports;
 import utility.Screenshot;
 
-
-
 public class Listeners extends BaseTest implements ITestListener {
 
 		public void onTestStart(ITestResult result)

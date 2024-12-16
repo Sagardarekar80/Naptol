@@ -3,11 +3,26 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
+      <class name="test.NaptolHomePageTest"/>
       <class name="test.NaptolProductDetailsPageTest"/>
       <class name="test.NaptolCartPageTest"/>
       <class name="test.SortPageTest"/>
       <class name="test.NaptolQuickViewTest"/>
-      <class name="test.NaptolHomePageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
+
+
+<!-- 
+
+
+
+
+
+
+
+
+
+
+
+ -->

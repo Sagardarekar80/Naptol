@@ -31,13 +31,12 @@ public class NaptolQuickViewTest extends BaseTest{
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();						
 		naptolHomePage.moveToProduct(driver,1);		
-		boolean result = naptolHomePage.clickOnQuickView(1);
+		naptolHomePage.clickOnQuickView(1);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
-		String ProductName =  naptolQuickViewPage.getProductName();
-		
+		String ProductName =  naptolQuickViewPage.getProductName();		
 		if(naptolQuickViewPage.getProductColorList()>0)
 		{
-			 naptolQuickViewPage.SelectProductColor(1);						
+			 naptolQuickViewPage.selectProductColor(1);						
 			naptolQuickViewPage.clickOnClickHereToBuyButton();			
 		}
 		else

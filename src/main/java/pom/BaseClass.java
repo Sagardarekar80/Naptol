@@ -2,9 +2,7 @@ package pom;
 
 import java.util.Iterator;
 import java.util.Set;
-
 import org.openqa.selenium.WebDriver;
-
 public class BaseClass {
 
 	public String removeComaFromString(String s)
@@ -49,9 +47,6 @@ public class BaseClass {
 		}
 		return title;
 	}
-	
-	
-	
 	
 }
 
