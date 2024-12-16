@@ -3,9 +3,6 @@ package test;
 import java.io.IOException;
 import java.time.Duration;
 import org.apache.poi.EncryptedDocumentException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -68,8 +65,7 @@ public class NaptolCartPageTest extends BaseTest {
 		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);
 		int ListCount = naptolCartPage.getCartItemCount();
 		naptolCartPage.clickOnRemoveBtm(0);		
-		webDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cartItems']")));		
+		waitForElementToBeClickable(driver, Duration.ofSeconds(10), "//div[@id='cartItems']");
 		int AfterRemoveListCount = naptolCartPage.getCartItemCount();
 		Assert.assertTrue(ListCount > AfterRemoveListCount);
 	}
