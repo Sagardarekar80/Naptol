@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import junit.framework.Assert;
 import pojo.Browser;
@@ -17,10 +18,11 @@ import pom.SortPage;
 @Listeners(test.Listeners.class)
 public class SortPageTest extends BaseTest
 {
+	@Parameters({"browser"})
 	@BeforeMethod
-	public void launchApplication()
+	public void launchApplication(String browser) 
 	{
-		driver = Browser.openBrowser();				
+		driver = Browser.openBrowser(browser);
 	}
 
 	@Test
@@ -34,15 +36,15 @@ public class SortPageTest extends BaseTest
 		SortPage sortPage = new SortPage(driver);
 		sortPage.clickOnSort();
 		//Most Expensive
-		sortPage.getSelectedOption(3);    					
+		sortPage.getSelectedOption(3);  
+		Thread.sleep(5000);
 		try 
 		{
 			double priceList[] = sortPage.getProducPriceList();			
 			for(int i=0;i<priceList.length;i++)
 			{
 				if(i<priceList.length-1)
-				{	
-					waitForElementToBeClickable(driver ,Duration.ofSeconds(05) , "//span[@class='offer-price']");
+				{						
 					Assert.assertTrue(priceList[i]>=priceList[i+1]);
 				}
 			}

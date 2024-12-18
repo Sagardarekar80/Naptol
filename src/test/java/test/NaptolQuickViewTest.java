@@ -6,6 +6,7 @@ import org.apache.poi.EncryptedDocumentException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import junit.framework.Assert;
@@ -17,10 +18,11 @@ import pom.NaptolQuickViewPage;
 @Listeners(test.Listeners.class)
 public class NaptolQuickViewTest extends BaseTest{
 
+	@Parameters({"browser"})
 	@BeforeMethod
-	public void launchApplication()
+	public void launchApplication(String browser) 
 	{
-		driver = Browser.openBrowser();				
+		driver = Browser.openBrowser(browser);
 	}
 	
 	@Test
