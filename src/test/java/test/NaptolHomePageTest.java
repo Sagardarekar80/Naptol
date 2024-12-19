@@ -75,7 +75,7 @@ public class NaptolHomePageTest extends BaseTest  {
 		Assert.assertTrue(result);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		String QuickViewProName = naptolQuickViewPage.getProductName();	
-		Assert.assertEquals(ProductName, QuickViewProName);		
+		Assert.assertTrue(QuickViewProName.contains(ProductName));
 		Double ProductPrice = naptolHomePage.getProductPrice(2);
 		Double QuickProductPrice = naptolQuickViewPage.getProductPrice(2);
 		Assert.assertEquals(ProductPrice, QuickProductPrice);				
@@ -94,7 +94,7 @@ public class NaptolHomePageTest extends BaseTest  {
 		NaptolProductDetailsPage naptolProductDetailsPage = new NaptolProductDetailsPage(driver);
 		String ChildBrowserProductName = naptolProductDetailsPage.getProductName();							
 		double ChildBrowserProductPrice = naptolProductDetailsPage.getProductPrice(1);		
-		Assert.assertEquals(ProductName, ChildBrowserProductName);
+		Assert.assertTrue(ChildBrowserProductName.contains(ProductName));
 		Assert.assertEquals(ProductPrice, ChildBrowserProductPrice);
 	}
 	

@@ -4,13 +4,13 @@
   <test thread-count="5" name="ChromeTest(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="test.SortPageTest">
+      <class name="test.NaptolHomePageTest">
         <methods>
-          <include name="verifySortFeature"/>
           <include name="closeBrowser"/>
+          <include name="verifyIfProdutDetailsAreCorrcetIfViewInQuickView"/>
           <include name="launchApplication"/>
         </methods>
-      </class> <!-- test.SortPageTest -->
+      </class> <!-- test.NaptolHomePageTest -->
     </classes>
   </test> <!-- ChromeTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

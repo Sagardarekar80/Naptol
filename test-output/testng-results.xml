@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-18T23:42:21 IST" name="Suite" finished-at="2024-12-18T23:42:37 IST" duration-ms="16209">
+  <suite started-at="2024-12-19T20:47:18 IST" name="Suite" finished-at="2024-12-19T20:47:31 IST" duration-ms="13628">
     <groups>
     </groups>
-    <test started-at="2024-12-18T23:42:21 IST" name="ChromeTest" finished-at="2024-12-18T23:42:37 IST" duration-ms="16209">
+    <test started-at="2024-12-19T20:47:18 IST" name="ChromeTest" finished-at="2024-12-19T20:47:31 IST" duration-ms="13628">
       <class name="test.SortPageTest">
-        <test-method is-config="true" signature="launchApplication(java.lang.String)[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-18T23:42:21 IST" name="launchApplication" finished-at="2024-12-18T23:42:26 IST" duration-ms="4912" status="PASS">
+        <test-method is-config="true" signature="launchApplication(java.lang.String)[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-19T20:47:18 IST" name="launchApplication" finished-at="2024-12-19T20:47:22 IST" duration-ms="3677" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verifySortFeature()[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-18T23:42:26 IST" name="verifySortFeature" finished-at="2024-12-18T23:42:37 IST" duration-ms="10781" status="PASS">
+        <test-method signature="verifySortFeature()[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-19T20:47:22 IST" name="verifySortFeature" finished-at="2024-12-19T20:47:31 IST" duration-ms="9572" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySortFeature -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-18T23:42:37 IST" name="closeBrowser" finished-at="2024-12-18T23:42:37 IST" duration-ms="159" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:test.SortPageTest@77c2494c]" started-at="2024-12-19T20:47:31 IST" name="closeBrowser" finished-at="2024-12-19T20:47:31 IST" duration-ms="116" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->

@@ -7,12 +7,12 @@
       <class name="test.NaptolHomePageTest"/>
       <class name="test.NaptolProductDetailsPageTest"/>
       <class name="test.NaptolCartPageTest"/>     
-      <class name="test.NaptolQuickViewTest"/> 
-      <class name="test.SortPageTest"/>
+      <class name="test.NaptolQuickViewTest"/>  
+      <class name="test.SortPageTest"/> 
     </classes>
   </test> 
   
-   <test thread-count="5" name="EdgeTest">
+  <test thread-count="5" name="EdgeTest">
     <parameter name="browser" value="edge"></parameter>
     <classes>
       <class name="test.NaptolHomePageTest"/>
@@ -32,6 +32,6 @@
       <class name="test.SortPageTest"/>
       <class name="test.NaptolQuickViewTest"/>
     </classes>
-  </test>  
+  </test>   
   
 </suite> 
